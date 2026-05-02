@@ -1,20 +1,20 @@
-body { margin: 0; background: #0f0f0f; color: white; font-family: sans-serif; transition: 0.3s; }
-.hero { padding: 40px 20px; text-align: center; }
-.logo-text { color: #ff0000; font-size: 35px; }
-.search-container { display: flex; background: #1e1e1e; border-radius: 25px; padding: 5px 15px; border: 1px solid #333; max-width: 500px; margin: auto; }
-.search-container input { background: none; border: none; color: white; flex: 1; padding: 10px; outline: none; }
-.search-container button { background: #ff0000; border: none; color: white; border-radius: 50%; width: 40px; height: 40px; cursor: pointer; }
+body { margin: 0; background: #0f0f0f; color: white; font-family: sans-serif; transition: 0.3s; padding-bottom: 70px; }
+.hero { padding: 50px 20px; text-align: center; }
+.logo-text { color: #ff0000; font-size: 30px; }
+.search-container { display: flex; background: #1e1e1e; border-radius: 30px; padding: 5px 15px; border: 1px solid #333; max-width: 450px; margin: auto; }
+.search-container input { background: none; border: none; color: white; flex: 1; padding: 12px; outline: none; }
+.search-container button { background: #ff0000; border: none; color: white; border-radius: 50%; width: 45px; height: 45px; cursor: pointer; }
 
 .app-page { display: none; padding: 20px; }
 .app-page.active { display: block; }
 
-.bottom-nav { position: fixed; bottom: 0; width: 100%; background: #1a1a1a; display: flex; justify-content: space-around; padding: 10px 0; border-top: 1px solid #333; }
+.bottom-nav { position: fixed; bottom: 0; width: 100%; background: #1a1a1a; display: flex; justify-content: space-around; padding: 12px 0; border-top: 1px solid #333; }
 .nav-item { text-align: center; color: #777; cursor: pointer; }
 .nav-item.active { color: #ff0000; }
 .nav-item i { display: block; font-size: 20px; }
 
-.settings-group { background: #1e1e1e; border-radius: 10px; padding: 15px; }
-.setting-item { display: flex; justify-content: space-between; margin-bottom: 15px; }
+.settings-group { background: #1e1e1e; border-radius: 15px; padding: 15px; margin-bottom: 20px; border: 1px solid #333; }
+.setting-item { display: flex; justify-content: space-between; align-items: center; padding: 12px 0; border-bottom: 1px solid #2a2a2a; cursor: pointer; }
+.setting-item:last-child { border-bottom: none; }
 select { background: #333; color: white; border: none; padding: 5px; border-radius: 5px; }
-
-.dl-btn { background: #28a745; color: white; padding: 15px; display: block; text-align: center; border-radius: 10px; text-decoration: none; margin-top: 20px; }
+.dl-btn { background: #28a745; color: white; padding: 15px; display: block; text-align: center; border-radius: 10px; text-decoration: none; font-weight: bold; }
