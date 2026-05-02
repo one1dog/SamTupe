@@ -7,11 +7,11 @@
     <link rel="stylesheet" href="style.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
 </head>
-<body class="dark-theme">
+<body id="app-body" class="dark-theme">
 
     <section id="search-section" class="app-page active">
         <div class="hero">
-            <h1 class="logo-text">SamTupe</h1>
+            <h1 class="logo-text">SamTupe Pro</h1>
             <div class="search-container">
                 <input type="text" id="video-url" placeholder="ضع رابط الفيديو هنا...">
                 <button onclick="analyzeVideo()"><i class="fas fa-magic"></i></button>
@@ -21,10 +21,12 @@
     </section>
 
     <section id="settings-section" class="app-page">
-        <h2 class="section-title">الإعدادات</h2>
+        <h2 class="section-title">الإعدادات المتقدمة</h2>
+        
         <div class="settings-group">
+            <h3><i class="fas fa-cog"></i> إعدادات التحميل</h3>
             <div class="setting-item">
-                <span><i class="fas fa-palette"></i> المظهر (السمة)</span>
+                <span>المظهر (السمة)</span>
                 <select id="theme-select" onchange="changeTheme()">
                     <option value="dark">داكن</option>
                     <option value="light">مضيء</option>
@@ -32,11 +34,27 @@
                 </select>
             </div>
             <div class="setting-item">
-                <span><i class="fas fa-language"></i> اللغة</span>
-                <select id="lang-select">
-                    <option value="ar">العربية</option>
-                    <option value="en">English</option>
+                <span>سرعة التحميل (Turbo)</span>
+                <select id="download-speed">
+                    <option value="normal">عادية</option>
+                    <option value="fast">سريعة جداً</option>
                 </select>
+            </div>
+        </div>
+
+        <div class="settings-group">
+            <h3><i class="fas fa-user-shield"></i> الأمان والخصوصية</h3>
+            <div class="setting-item" onclick="openVault()">
+                <span>الخزانة السرية</span>
+                <i class="fas fa-lock"></i>
+            </div>
+        </div>
+
+        <div class="settings-group">
+            <h3><i class="fas fa-info-circle"></i> النظام</h3>
+            <div class="setting-item" onclick="showAbout()">
+                <span>حول البرنامج</span>
+                <span>V 2.1.0</span>
             </div>
         </div>
     </section>
