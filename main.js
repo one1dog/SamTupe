@@ -1,4 +1,4 @@
-// نظام التنقل بين الصفحات
+// نظام التنقل
 function showPage(pageId, element) {
     document.querySelectorAll('.app-page').forEach(p => p.classList.remove('active'));
     document.querySelectorAll('.nav-item').forEach(n => n.classList.remove('active'));
@@ -6,59 +6,53 @@ function showPage(pageId, element) {
     element.classList.add('active');
 }
 
-// تغيير المظهر (Theme)
+// تغيير السمة
 function changeTheme() {
     const theme = document.getElementById('theme-select').value;
-    const body = document.body;
-    
-    if (theme === 'light') {
-        body.style.backgroundColor = "#ffffff";
-        body.style.color = "#333333";
-    } else if (theme === 'gold') {
-        body.style.backgroundColor = "#1a1a1a";
-        body.style.color = "#ffd700";
-    } else {
-        body.style.backgroundColor = "#0f0f0f";
-        body.style.color = "#ffffff";
-    }
-    localStorage.setItem('samtupe_theme', theme);
+    const body = document.getElementById('app-body');
+    if (theme === 'light') { body.style.backgroundColor = "#fff"; body.style.color = "#333"; }
+    else if (theme === 'gold') { body.style.backgroundColor = "#1a1a1a"; body.style.color = "#ffd700"; }
+    else { body.style.backgroundColor = "#0f0f0f"; body.style.color = "#fff"; }
+    localStorage.setItem('user_theme', theme);
 }
 
-// محرك التحميل
+// محرك التحميل المتطور
 async function analyzeVideo() {
     const url = document.getElementById('video-url').value;
     const preview = document.getElementById('preview-area');
-    
-    if(!url) return alert("الرجاء إدخال الرابط");
-    
-    preview.innerHTML = "<p>جاري المعالجة...</p>";
+    if(!url) return alert("ضع الرابط!");
+
+    preview.innerHTML = "<p>جاري معالجة الطلب عبر سيرفر آمن...</p>";
 
     try {
         const res = await fetch('https://api.cobalt.tools/api/json', {
             method: 'POST',
             headers: { 'Content-Type': 'application/json', 'Accept': 'application/json' },
-            body: JSON.stringify({ url: url })
+            body: JSON.stringify({ url: url, videoQuality: "720" })
         });
         const data = await res.json();
-
         if (data.url) {
-            preview.innerHTML = `
-                <div class="result-card">
-                    <a href="${data.url}" target="_blank" class="dl-btn">تحميل الملف (Download)</a>
-                </div>`;
+            preview.innerHTML = `<div class="result-card"><a href="${data.url}" target="_blank" class="dl-btn">بدء التحميل المباشر</a></div>`;
         } else {
-            preview.innerHTML = "<p>تعذر جلب البيانات. تأكد من الرابط.</p>";
+            preview.innerHTML = "<p>حدث خطأ: تأكد من الرابط أو إعدادات HTTPS.</p>";
         }
     } catch (e) {
-        preview.innerHTML = "<p>حدث خطأ. تأكد من استخدام HTTPS لموقعك.</p>";
+        preview.innerHTML = "<p>فشل الاتصال. تأكد أن موقعك يعمل بـ HTTPS على GitHub.</p>";
     }
 }
 
-// تطبيق الإعدادات عند البداية
+// مميزات إضافية
+function openVault() {
+    const pass = prompt("أدخل كلمة سر الخزانة:");
+    if(pass === "1234") alert("تم فتح الخزانة السرية بنجاح.");
+    else alert("كلمة سر خاطئة!");
+}
+
+function showAbout() {
+    alert("SamTupe Pro\nتم التطوير بواسطة: Mr Abdo\nجميع الحقوق محفوظة 2026");
+}
+
 window.onload = () => {
-    const saved = localStorage.getItem('samtupe_theme');
-    if(saved) {
-        document.getElementById('theme-select').value = saved;
-        changeTheme();
-    }
+    const saved = localStorage.getItem('user_theme');
+    if(saved) { document.getElementById('theme-select').value = saved; changeTheme(); }
 };
