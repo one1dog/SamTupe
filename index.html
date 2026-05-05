@@ -1,63 +1,65 @@
 <!DOCTYPE html>
 <html lang="ar">
 <head>
-  <meta charset="UTF-8">
-  <title>SamTupe</title>
-  <link rel="stylesheet" href="style.css">
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>SamTupe Pro</title>
+<link rel="stylesheet" href="style.css">
 </head>
+
 <body>
-
-<!-- تسجيل الدخول -->
-<div id="authBox" class="auth-box">
-  <h2>SamTupe</h2>
-  <input type="email" id="email" placeholder="Email">
-  <input type="password" id="password" placeholder="Password">
-  <button onclick="login()">دخول</button>
-  <button onclick="register()">إنشاء حساب</button>
-</div>
-
-<!-- القائمة الجانبية -->
-<div id="drawer" class="drawer">
-  <h2>SamTupe</h2>
-  <ul>
-    <li onclick="toggleTheme()">🌙 الوضع الليلي</li>
-    <li onclick="logout()">🚪 تسجيل الخروج</li>
-  </ul>
-</div>
 
 <!-- Header -->
 <header>
-  <button onclick="openDrawer()">☰</button>
+  <button onclick="toggleDrawer()">☰</button>
   <h1>SamTupe</h1>
 </header>
 
-<!-- البحث -->
-<div class="search-container">
-  <input id="searchInput" type="text" placeholder="ابحث أو أدخل رابط">
-  <button onclick="search()">🔍</button>
+<!-- Drawer -->
+<div id="drawer" class="drawer">
+  <h2>SamTupe</h2>
+  <p onclick="showPage('home')">🏠 الرئيسية</p>
+  <p onclick="showPage('fav')">⭐ المفضلة</p>
+  <p onclick="showPage('settings')">⚙️ الإعدادات</p>
+  <p onclick="logout()">🚪 خروج</p>
 </div>
 
-<!-- روابط -->
-<div class="quick-grid">
-  <div onclick="loadSite('https://www.google.com')" class="card">Google</div>
-  <div onclick="loadSite('https://www.youtube.com')" class="card">YouTube</div>
-  <div onclick="loadSite('https://www.facebook.com')" class="card">Facebook</div>
-  <div onclick="loadSite('https://www.instagram.com')" class="card">Instagram</div>
+<!-- HOME -->
+<div id="home" class="page active">
+  <div class="search-box">
+    <input id="searchInput" placeholder="ابحث أو أدخل رابط">
+    <button onclick="search()">🔍</button>
+  </div>
+
+  <div class="grid">
+    <div onclick="openSite('https://www.google.com')" class="card">Google</div>
+    <div onclick="openSite('https://www.youtube.com')" class="card">YouTube</div>
+    <div onclick="openSite('https://www.facebook.com')" class="card">Facebook</div>
+    <div onclick="openSite('https://www.instagram.com')" class="card">Instagram</div>
+  </div>
 </div>
 
-<!-- زر حفظ -->
-<div style="text-align:center;">
-  <button onclick="saveFavorite()">⭐ حفظ الصفحة</button>
+<!-- FAVORITES -->
+<div id="fav" class="page">
+  <h2>⭐ المفضلة</h2>
+  <div id="favList"></div>
 </div>
 
-<!-- عرض المفضلة -->
-<div id="favorites"></div>
+<!-- SETTINGS -->
+<div id="settings" class="page">
+  <h2>⚙️ الإعدادات</h2>
+  <button onclick="toggleTheme()">🌙 الوضع الليلي</button>
+</div>
 
-<!-- المتصفح -->
-<iframe id="browser" src="https://www.google.com"></iframe>
+<!-- Bottom Navigation -->
+<nav class="bottom-nav">
+  <button onclick="showPage('home')">🏠</button>
+  <button onclick="showPage('fav')">⭐</button>
+  <button onclick="showPage('settings')">⚙️</button>
+</nav>
 
 <script type="module" src="firebase.js"></script>
-<script type="module" src="script.js"></script>
+<script type="module" src="app.js"></script>
 
 </body>
 </html>
